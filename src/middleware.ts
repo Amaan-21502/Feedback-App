@@ -7,6 +7,7 @@ export const config = {
 };
 
 export async function middleware(request: NextRequest) {
+  console.log(process.env.RESEND_API_KEY)
   const token = await getToken({ req: request });
   const url = request.nextUrl;
 
