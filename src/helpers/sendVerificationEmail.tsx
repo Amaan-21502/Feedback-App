@@ -1,5 +1,5 @@
 import { transporter } from '@/lib/nodemailer';
-import VerificationEmail from '../../emails/VerificationEmail';
+import {VerificationEmail} from "@/helpers/VerificationEmail";
 import { render } from '@react-email/render';
 import { ApiResponse } from '@/types/ApiResponse';
 
@@ -16,9 +16,7 @@ export async function sendVerificationEmail({
 }: SendVerificationEmailProps): Promise<ApiResponse> {
   try {
     // Render the email template to HTML string
-    const emailHtml = await render(
-      <VerificationEmail username={username} otp={otp} />
-    );
+    const emailHtml = await render(<VerificationEmail username={username} otp={otp}/>);
 
     // const emailHtml = "<html><body><h1>Test Email</h1><p>Your OTP is: 123456</p></body></html>";
 
